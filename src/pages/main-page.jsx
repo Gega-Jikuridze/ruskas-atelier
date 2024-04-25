@@ -1,18 +1,14 @@
-import Background from "../components/background"
-import CommentPopular from "../components/comment-popular"
-import Footer from "../components/footer"
-import Header from "../components/header"
+import Background from "../components/background";
+import CommentPopular from "../components/comment-popular";
+
 
 const MainPage = () => {
-
-
-    return <div className="main-page">
-        <Header/>
-        <Background/>
-        <CommentPopular/>
-        <Footer/>
+  return (
+    <div className="main-page">
+      <Background />
+      <CommentPopular />
     </div>
-}
+  );
+};
 
-
-export default MainPage
+export default MainPage;

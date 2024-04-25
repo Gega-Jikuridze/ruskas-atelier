@@ -1,16 +1,12 @@
-import Footer from "../components/footer"
-import Header from "../components/header"
-import Products from "../components/products"
+
+import Products from "../components/products";
 
 const ProductsPage = () => {
-
-
-    return <div className="products-page">
-        <Header/>
-        <Products />
-        <Footer />
+  return (
+    <div className="products-page">
+      <Products />
     </div>
-}
+  );
+};
 
-
-export default ProductsPage
+export default ProductsPage;

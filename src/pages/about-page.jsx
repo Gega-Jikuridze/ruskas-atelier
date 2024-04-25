@@ -1,16 +1,12 @@
-import AboutUs from "../components/about-us"
-import Footer from "../components/footer"
-import Header from "../components/header"
+import AboutUs from "../components/about-us";
+
 
 const AboutPage = () => {
-
-
-    return <div className="main-page">
-        <Header/>
-        <AboutUs />
-        <Footer/>
+  return (
+    <div className="main-page">
+      <AboutUs />
     </div>
-}
+  );
+};
 
-
-export default AboutPage
+export default AboutPage;
