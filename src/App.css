@@ -1,0 +1,445 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body{
+  position: relative;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+
+
+/* default  */
+.container{
+  padding: 0 80px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+
+/* ////////////////////////////// */
+/* header  */
+
+header{
+  background-color: #092241;
+}
+
+.header{
+  display: flex ;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+
+/* nav  */
+
+.nav {
+  display: flex;
+  gap: 24px;
+  position: relative;
+}
+
+/* category   */
+.header-category{
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.header-category h1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  padding-bottom: 13px;
+  font-size: 20px;
+  font-weight: 400;
+  transition: .3s;
+  cursor: pointer;
+
+
+}
+
+
+.header-category h1:hover{
+  color: #B99143;
+}
+
+.nav a{
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  border:  3px solid #092241;
+  padding: 3px;
+  transition: .3s;
+}
+
+.nav a:hover{
+  color: #D2AE7E;
+  border-bottom: 3px solid #D2AE7E;
+}
+
+.search{
+  cursor: pointer;
+  display: flex;
+  position: relative;
+}
+
+.search form{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search form i{
+  color: white;
+  font-size: 16px;
+  border-radius: 100%;
+  border: 2px solid white;
+}
+
+
+.search input {
+  border-radius: 15px;
+  height: 25px;
+  width: 150px;
+}
+
+
+
+
+
+
+/* //////////////////////////////////// */
+
+/* background section  */
+
+.background-section{
+  background-image: url(./assets/background.png);
+  background-size: cover;
+  background-position: center;
+  height: 715px;
+}
+
+.background{
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+}
+
+.background h1{
+  color: #FFFFFF;
+  background-color: #B99143;
+  font-size: 24px;
+  font-weight: 400;
+  padding: 26px 167px 26px 37px;
+  border-radius: 20px 0px 0px 20px;
+
+}
+
+
+
+
+
+
+
+/* //////////////////////////////////////// */
+
+/* comment and popular section  */
+
+.comment-popular{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 133px;
+}
+
+.comment{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.comment h1{
+  font-size: 32px;
+  font-weight: 400;
+  
+}
+
+.comment button {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 21px 16px;
+  background-color: #11427E;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.comment button:hover{
+  color: #11427E;
+  background-color: white;
+  box-shadow: 4px 4px 5px #11427E;
+}
+
+.popular{
+  margin-top: -100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+
+.popular-images{
+  display: flex;
+  gap: 30px;
+}
+
+.popular-images img{
+  cursor: pointer;
+  transition: .3s;
+}
+
+.popular-images img:hover{
+  transform: scale(1.1) translateY(-20px);
+}
+
+.popular h1{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+
+.popular h1:hover{
+  color: #B99143;
+}
+
+
+
+/* ////////////////////////////////////////////// */
+/* comment form  */
+.overlay{
+    background-color: #00000080; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+
+.contact-form{
+  max-width: 550px;
+  padding: 0 50px;
+  position: absolute;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 40px;
+  width: 100%;
+}
+
+.contact-form i{
+  display: flex;
+  align-self: flex-end;
+  font-size: 40px;
+  padding:  19px 0;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.contact-form i:hover{
+  color: red;
+  transform: scale(1.1);
+}
+
+.contact-form h1{
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+
+.contact-form form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  
+}
+
+
+.contact-form form input{
+  font-size: 20px;
+  width: 100%;
+  font-weight: 400;
+  padding: 13px 16px;
+  border: 2px solid #D5D5D5;
+  border-radius: 5px;
+}
+
+.contact-form form input:hover{
+  border: 2px solid #92BCF0;
+}
+
+.contact-submit{
+  background-color: #92BCF0;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  cursor: pointer;
+  color: white;
+  transition: .3s;
+
+}
+
+.contact-submit:hover{
+  background-color: #11427E;
+}
+
+
+
+/* /////////////////////////////////// */
+
+/* footer  */
+
+footer {
+  background-color: #092241;
+}
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 32px;
+}
+
+.footer-logo{
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid #D2AE7E;
+  width: 100%;
+}
+
+
+.footer-nav{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 16px;
+
+}
+
+.footer-nav h1{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.footer-nav i{
+  color: #B99143;
+  font-size: 25px;
+}
+
+.footer-first-nav{
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.footer-second-nav{
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.footer-nav h1{
+  color: white;
+  font-size: 16px;
+}
+
+
+
+
+
+/* ================================= */
+/* about us page  */
+
+.about-us{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding-top: 65px;
+  padding-bottom: 200px;
+}
+
+.about-us-text{
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.about-us-text p{
+  font-size: 16px;
+}
+
+
+/* //////////////////////////////////// */
+/* products page  */
+
+.products{
+  padding-top: 65px;
+}
+
+.products h1{
+  font-size: 24px;
+  font-weight: 400;
+  color: #00000080;
+}
+
+.product-cards{
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  margin-top: 65px;
+}
+
