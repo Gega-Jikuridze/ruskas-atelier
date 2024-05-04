@@ -19,11 +19,6 @@ const CommentPopular = () => {
     setModal(false);
   };
 
-  const submit = (event) => {
-    setModal(false);
-    event.preventDefault();
-  };
-
   return (
     <section className="comment-popular-section">
       <div className="comment-popular container">
@@ -32,7 +27,7 @@ const CommentPopular = () => {
             ადგილი სადაც თქვენი <br /> სურვილები იქცევა რეალობად
           </h1>
           <button onClick={handleClick}>დატოვეთ საქონტაქტო ინფორმაცია</button>
-          {modal ? <Contact onClose={handleClose} onSubmit={submit} /> : null}
+          {modal ? <Contact onClose={handleClose} /> : null}
         </div>
 
         <div className="popular">

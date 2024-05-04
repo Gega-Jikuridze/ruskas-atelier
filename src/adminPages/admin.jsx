@@ -1,32 +1,44 @@
-
-import React, { useState } from "react";
-import ControlPanel from "../components/control-panel";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const Admin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const [isAdmin, setIsAdmin] = useLocalStorage("isAdmin", false);
+
+  console.log(isAdmin);
+
+  const navigate = useNavigate();
 
   const admin = {
     adminName: "ruska",
-    adminPass: "ruska123"
+    adminPass: "ruska123",
   };
+
+  useEffect(() => {
+    if (isAdmin) {
+      navigate("/admin/adminPanel");
+    }
+  }, [isAdmin, navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     if (username === admin.adminName && password === admin.adminPass) {
-      console.log(error);
-      setError(true);
-    } else {
       setError(false);
-      console.log(error)
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
+      setError(true);
+      console.log(error);
     }
   };
 
   return (
     <div className="admin-page">
-      {!error ?     
-       <div className="admin-log">
+      <div className="admin-log">
         <h1>ადმინი</h1>
         <form className="admin-form" onSubmit={handleSubmit}>
           <input
@@ -43,11 +55,13 @@ const Admin = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input type="submit" value={"შესვლა"} className="log-submit"/>
+          <input type="submit" value={"შესვლა"} className="log-submit" />
         </form>
-        {error && <p className="error">მომხმარებლის სახელი ან პაროლი არასწორია!</p>}
-      </div> : <ControlPanel/>}
-
+        <button onClick={() => navigate("/")}>Log Out</button>
+        {error && (
+          <p className="error">მომხმარებლის სახელი ან პაროლი არასწორია!</p>
+        )}
+      </div>
     </div>
   );
 };

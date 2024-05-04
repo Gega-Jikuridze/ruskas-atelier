@@ -1,4 +1,3 @@
-
 import Products from "../components/products";
 
 const ProductsPage = () => {

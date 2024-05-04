@@ -23,17 +23,12 @@ const Search = () => {
           </form>
         </div>
       )}
-
       <style>
         {search
           ? `
-
             .search img{
                 display:none
             }
-            
-
- 
             `
           : ""}
       </style>
