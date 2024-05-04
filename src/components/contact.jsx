@@ -1,9 +1,13 @@
-
+import useProductRequest from "../hooks/useRequest"
 
 const Contact = ({onClose,submit} ) => {
 
 
+    const {loading , sendRequest} = useProductRequest({
+        url:"" , method: "POST"
+    })
 
+    
 
     return <div className="overlay">
         <div className="contact-form">
