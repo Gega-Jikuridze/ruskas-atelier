@@ -1,85 +1,90 @@
 import { useState } from "react";
 import productImage from "../assets/product.png";
-
+import { ProductsData } from "../data/ProductsData";
 
 const Products = () => {
+  const [checkboxValues, setCheckboxValues] = useState({
+    woman: false,
+    man: false,
+    kid: false,
+    charch: false,
+    national: false,
+  });
 
-  const nav = ["ქალი", "კაცი", "ბავშვი", "საეკლესიო", "ნაციონალური"];
+  const handleCheckboxChange = (event) => {
+    const { id, checked } = event.target;
 
+    setCheckboxValues((prevValues) => ({
+      ...prevValues,
+      [id]: checked,
+    }));
+  };
 
-  const product = [
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-      genger: 'female',
-      color: 'red'
-    },
-
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-    },
-
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-    },
-
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-    },
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-    },
-
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-    },
-
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-    },
-
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-    },
-
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-    },
-
-    {
-      image: productImage,
-      title: "Lorem ipsum dolor sit amet",
-    },
-  ];
+  const Products = ProductsData;
+  console.log(Products);
 
   return (
     <div className="products-content container">
       <h1 className="filter-h1">ფილტრი</h1>
 
-    <div className="products">
-      <div className="product-filter">
-          {nav.map((el , index) => (
-            <h1 key={index}>{el} <input type="checkbox" /></h1>
-          ))}
-      </div>
+      <div className="products">
+        <form className="product-filter">
+          <label htmlFor="woman">
+            ქალი
+            <input
+              type="checkbox"
+              id="woman"
+              checked={checkboxValues.woman}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+          <label htmlFor="man">
+            კაცი
+            <input
+              type="checkbox"
+              id="man"
+              checked={checkboxValues.man}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+          <label htmlFor="kid">
+            ბავშვი
+            <input
+              type="checkbox"
+              id="kid"
+              checked={checkboxValues.kid}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+          <label htmlFor="charch">
+            საეკლესიო
+            <input
+              type="checkbox"
+              id="charch"
+              checked={checkboxValues.charch}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+          <label htmlFor="national">
+            ნაციონალური
+            <input
+              type="checkbox"
+              id="national"
+              checked={checkboxValues.national}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+        </form>
 
-      <div className="product-cards">
-        {product.map((el, index) => (
-          <div className="product-card" key={index}>
-            <img src={el.image} alt="" />
-            <p>{el.title}</p>
-          </div>
-        ))}
+        <div className="product-cards">
+          {Products.map((el) => (
+            <div className="product-card" key={el.id}>
+              <h1>{el.title}</h1>
+              <img src={el.image} alt="" />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

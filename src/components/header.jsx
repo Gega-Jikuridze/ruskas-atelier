@@ -2,19 +2,11 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import React, { useEffect, useRef, useState } from "react";
 import Search from "./search";
-import ProductsPage from "../pages/products-page";
-
-
 
 const Header = () => {
   const [category, setCategory] = useState(false);
   const categoryRef = useRef(null);
   const categoryBtnRef = useRef(null);
-
-
-
- 
-
 
   const handleClickOutside = (event) => {
     if (
@@ -45,7 +37,7 @@ const Header = () => {
 
         <div className="nav">
           <Link to="/">მთავარი</Link>
-          <Link to="/products" >პროდუქცია </Link>
+          <Link to="/products">პროდუქცია </Link>
           <Link to="/about">ჩვენ შესახებ</Link>
         </div>
 

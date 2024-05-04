@@ -10,7 +10,7 @@ const useProductFetch = ({ url, method }) => {
     fetch(url, {
       method,
       headers: {
-        'accept': "application/json",
+        accept: "application/json",
       },
     })
       .then((res) => {
@@ -36,4 +36,3 @@ const useProductFetch = ({ url, method }) => {
 };
 
 export default useProductFetch;
-

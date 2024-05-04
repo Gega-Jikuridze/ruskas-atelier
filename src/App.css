@@ -1,46 +1,41 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
 }
 
-body{
+body {
   position: relative;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
-
-
 /* default  */
-.container{
+.container {
   padding: 0 80px;
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
 }
 
-
-
 /* ////////////////////////////// */
 /* header  */
 
-header{
+header {
   background-color: #092241;
 }
 
-.header{
-  display: flex ;
+.header {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding-top: 16px;
   padding-bottom: 16px;
 }
-
 
 /* nav  */
 
@@ -51,7 +46,7 @@ header{
 }
 
 /* category   */
-.header-category{
+.header-category {
   position: absolute;
   width: 100%;
   background-color: white;
@@ -64,7 +59,7 @@ header{
   border-bottom-right-radius: 8px;
 }
 
-.header-category h1{
+.header-category h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -72,50 +67,46 @@ header{
   padding-bottom: 13px;
   font-size: 20px;
   font-weight: 400;
-  transition: .3s;
+  transition: 0.3s;
   cursor: pointer;
-
-
 }
 
-
-.header-category h1:hover{
-  color: #B99143;
+.header-category h1:hover {
+  color: #b99143;
 }
 
-.nav a{
+.nav a {
   color: white;
   font-size: 24px;
   font-weight: 400;
-  border:  3px solid #092241;
+  border: 3px solid #092241;
   padding: 3px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.nav a:hover{
-  color: #D2AE7E;
-  border-bottom: 3px solid #D2AE7E;
+.nav a:hover {
+  color: #d2ae7e;
+  border-bottom: 3px solid #d2ae7e;
 }
 
-.search{
+.search {
   cursor: pointer;
   display: flex;
   position: relative;
 }
 
-.search form{
+.search form {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.search form i{
+.search form i {
   color: white;
   font-size: 16px;
   border-radius: 100%;
   border: 2px solid white;
 }
-
 
 .search input {
   border-radius: 15px;
@@ -123,23 +114,18 @@ header{
   width: 150px;
 }
 
-
-
-
-
-
 /* //////////////////////////////////// */
 
 /* background section  */
 
-.background-section{
+.background-section {
   background-image: url(./assets/background.png);
   background-size: cover;
   background-position: center;
   height: 715px;
 }
 
-.background{
+.background {
   display: flex;
   height: 100%;
   justify-content: flex-end;
@@ -147,27 +133,20 @@ header{
   padding: 0;
 }
 
-.background h1{
-  color: #FFFFFF;
-  background-color: #B99143;
+.background h1 {
+  color: #ffffff;
+  background-color: #b99143;
   font-size: 24px;
   font-weight: 400;
   padding: 26px 167px 26px 37px;
   border-radius: 20px 0px 0px 20px;
-
 }
-
-
-
-
-
-
 
 /* //////////////////////////////////////// */
 
 /* comment and popular section  */
 
-.comment-popular{
+.comment-popular {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -176,37 +155,36 @@ header{
   padding-bottom: 133px;
 }
 
-.comment{
+.comment {
   display: flex;
   flex-direction: column;
   gap: 24px;
   align-items: flex-start;
 }
 
-.comment h1{
+.comment h1 {
   font-size: 32px;
   font-weight: 400;
-  
 }
 
 .comment button {
   font-size: 16px;
   font-weight: 400;
   padding: 21px 16px;
-  background-color: #11427E;
+  background-color: #11427e;
   color: white;
   border-radius: 5px;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.comment button:hover{
-  color: #11427E;
+.comment button:hover {
+  color: #11427e;
   background-color: white;
-  box-shadow: 4px 4px 5px #11427E;
+  box-shadow: 4px 4px 5px #11427e;
 }
 
-.popular{
+.popular {
   margin-top: -100px;
   display: flex;
   flex-direction: column;
@@ -214,53 +192,48 @@ header{
   gap: 12px;
 }
 
-
-.popular-images{
+.popular-images {
   display: flex;
   gap: 30px;
 }
 
-.popular-images img{
+.popular-images img {
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.popular-images img:hover{
+.popular-images img:hover {
   transform: scale(1.1) translateY(-20px);
 }
 
-.popular h1{
+.popular h1 {
   display: flex;
   align-items: center;
   gap: 15px;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-
-.popular h1:hover{
-  color: #B99143;
+.popular h1:hover {
+  color: #b99143;
 }
-
-
 
 /* ////////////////////////////////////////////// */
 /* comment form  */
-.overlay{
-    background-color: #00000080; 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
+.overlay {
+  background-color: #00000080;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
 
-
-.contact-form{
+.contact-form {
   max-width: 550px;
   padding: 0 50px;
-  position: absolute;
+  position: fixed;
   background-color: white;
   top: 50%;
   left: 50%;
@@ -273,65 +246,59 @@ header{
   width: 100%;
 }
 
-.contact-form i{
+.contact-form i {
   display: flex;
   align-self: flex-end;
   font-size: 40px;
-  padding:  19px 0;
+  padding: 19px 0;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.contact-form i:hover{
+.contact-form i:hover {
   color: red;
   transform: scale(1.1);
 }
 
-.contact-form h1{
+.contact-form h1 {
   font-size: 28px;
   margin-bottom: 40px;
 }
 
-
-.contact-form form{
+.contact-form form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 16px;
   width: 100%;
-  
 }
 
-
-.contact-form form input{
+.contact-form form input {
   font-size: 20px;
   width: 100%;
   font-weight: 400;
   padding: 13px 16px;
-  border: 2px solid #D5D5D5;
+  border: 2px solid #d5d5d5;
   border-radius: 5px;
 }
 
-.contact-form form input:hover{
-  border: 2px solid #92BCF0;
+.contact-form form input:hover {
+  border: 2px solid #92bcf0;
 }
 
-.contact-submit{
-  background-color: #92BCF0;
+.contact-submit {
+  background-color: #92bcf0;
   margin-top: 50px;
   margin-bottom: 80px;
   cursor: pointer;
   color: white;
-  transition: .3s;
-
+  transition: 0.3s;
 }
 
-.contact-submit:hover{
-  background-color: #11427E;
+.contact-submit:hover {
+  background-color: #11427e;
 }
-
-
 
 /* /////////////////////////////////// */
 
@@ -341,30 +308,28 @@ footer {
   background-color: #092241;
 }
 
-.footer{
+.footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-bottom: 32px;
 }
 
-.footer-logo{
+.footer-logo {
   padding-top: 16px;
   padding-bottom: 16px;
-  border-bottom: 3px solid #D2AE7E;
+  border-bottom: 3px solid #d2ae7e;
   width: 100%;
 }
 
-
-.footer-nav{
+.footer-nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding-top: 16px;
-
 }
 
-.footer-nav h1{
+.footer-nav h1 {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -373,36 +338,32 @@ footer {
   cursor: pointer;
 }
 
-.footer-nav i{
-  color: #B99143;
+.footer-nav i {
+  color: #b99143;
   font-size: 25px;
 }
 
-.footer-first-nav{
+.footer-first-nav {
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
 
-.footer-second-nav{
+.footer-second-nav {
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
 
-.footer-nav h1{
+.footer-nav h1 {
   color: white;
   font-size: 16px;
 }
 
-
-
-
-
 /* ================================= */
 /* about us page  */
 
-.about-us{
+.about-us {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -411,82 +372,77 @@ footer {
   padding-bottom: 200px;
 }
 
-.about-us-text{
+.about-us-text {
   display: flex;
   flex-direction: column;
   gap: 70px;
 }
 
-.about-us-text p{
+.about-us-text p {
   font-size: 16px;
 }
-
 
 /* //////////////////////////////////// */
 /* products page  */
 
-.products{
+.products {
   padding-top: 65px;
   display: flex;
   justify-content: space-between;
   gap: 100px;
 }
 
-.products h1{
+.products h1 {
   font-size: 24px;
   font-weight: 400;
   color: #00000080;
 }
 
-.product-cards{
+.product-cards {
   display: flex;
   gap: 20px;
   justify-content: space-between;
   flex-wrap: wrap;
   min-height: 100vh;
-  
 }
 
-
-.product-filter{
+.product-filter {
   height: max-content;
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.product-filter h1{
+.product-filter label {
   width: 180px;
   display: flex;
   justify-content: space-between;
   font-size: 18px;
   padding: 0 10px;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
 
-.product-filter input{
-  transition: .2s;
+.product-filter input {
+  transition: 0.2s;
   transform: scale(1.5);
   cursor: pointer;
 }
 
-.product-filter input:hover{
+.product-filter input:hover {
   transform: scale(2);
 }
 
-.filter-h1{
+.filter-h1 {
   margin-top: 30px;
   font-size: 20px;
   font-weight: 400;
 }
 
-
-
 /* /////////////////////////// */
 /* admin  */
 
-.admin-page{
+.admin-page {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -494,30 +450,28 @@ footer {
   padding-top: 100px;
 }
 
-
-.admin-log{
+.admin-log {
   border-radius: 30px;
   width: 400px;
-  height: 350px ;
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
   padding: 30px 20px;
-  background-color: white ;
+  background-color: white;
   box-shadow: 5px 5px 10px black;
 }
 
-.admin-form{
+.admin-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
-
 }
 
-.log-submit{
-  background-color: #11427E;
+.log-submit {
+  background-color: #11427e;
   color: white;
   padding: 5px 20px;
   font-size: 17px;
@@ -528,39 +482,34 @@ footer {
   cursor: pointer;
 }
 
-.admin-form input{
+.admin-form input {
   padding: 3px;
   width: 200px;
   height: 30px;
 }
 
-.error{
+.error {
   color: red;
   /* position: absolute   ; */
 }
 
-
-
-
-
 /* ////////////////////////////////// */
 /* control panel  */
 
-.control-panel{
+.control-panel {
   display: flex;
   justify-content: space-between;
 }
 
-.control-panel-edit{
+.control-panel-edit {
   max-width: 800px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
- 
 }
 
-.control-panel-edit h1{
+.control-panel-edit h1 {
   display: flex;
   justify-content: space-between;
   padding: 18px 50px;
@@ -570,7 +519,7 @@ footer {
 }
 
 .control-panel-edit button {
-  background-color: #11427E;
+  background-color: #11427e;
   color: white;
   padding: 8px 24px;
   font-size: 18px;
