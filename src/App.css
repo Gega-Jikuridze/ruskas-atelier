@@ -7,6 +7,7 @@
 
 body{
   position: relative;
+  background-color: #F4F4F4;
 }
 
 html{
@@ -426,6 +427,9 @@ footer {
 
 .products{
   padding-top: 65px;
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
 }
 
 .products h1{
@@ -440,6 +444,134 @@ footer {
   justify-content: space-between;
   flex-wrap: wrap;
   min-height: 100vh;
-  margin-top: 65px;
+  
 }
 
+
+.product-filter{
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.product-filter h1{
+  width: 180px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  padding: 0 10px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.product-filter input{
+  transition: .2s;
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.product-filter input:hover{
+  transform: scale(2);
+}
+
+.filter-h1{
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+
+
+/* /////////////////////////// */
+/* admin  */
+
+.admin-page{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+
+
+.admin-log{
+  border-radius: 30px;
+  width: 400px;
+  height: 350px ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background-color: white ;
+  box-shadow: 5px 5px 10px black;
+}
+
+.admin-form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+.log-submit{
+  background-color: #11427E;
+  color: white;
+  padding: 5px 20px;
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.admin-form input{
+  padding: 3px;
+  width: 200px;
+  height: 30px;
+}
+
+.error{
+  color: red;
+  /* position: absolute   ; */
+}
+
+
+
+
+
+/* ////////////////////////////////// */
+/* control panel  */
+
+.control-panel{
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-panel-edit{
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+ 
+}
+
+.control-panel-edit h1{
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 50px;
+  color: #000000;
+  background-color: white;
+  font-size: 28px;
+}
+
+.control-panel-edit button {
+  background-color: #11427E;
+  color: white;
+  padding: 8px 24px;
+  font-size: 18px;
+}
