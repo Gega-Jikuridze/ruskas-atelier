@@ -2,6 +2,7 @@ import "../App.css";
 import { Outlet } from "react-router-dom";
 import Admin from "../adminPages/admin";
 import ControlPanelPage from "../adminPages/ControlPanelPage";
+import Detailed from "../adminPages/Detailed";
 
 const adminRoutes = [
   {
@@ -19,6 +20,10 @@ const adminRoutes = [
       {
         element: <ControlPanelPage />,
         path: "adminPanel",
+      },
+      {
+        element: <Detailed />,
+        path: "adminPanel/:id",
       },
     ],
   },

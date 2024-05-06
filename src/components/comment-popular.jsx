@@ -1,20 +1,28 @@
 import { useState } from "react";
-import Image from "../assets/image 15.png";
 import Contact from "../components/contact";
+import useFetch from "../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 const CommentPopular = () => {
   const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
 
-  // open contact form
+  const { fetchRequest: ProductsImage } = useFetch({
+    url: `https://crudapi.co.uk/api/v1/products`,
+    method: "GET",
+  });
+
+  const Images = ProductsImage?.items.slice(0, 3).map((product) => ({
+    image: product.image,
+    id: product._uuid,
+  }));
 
   const handleClick = (event) => {
     event.preventDefault();
 
     setModal(!modal);
-    console.log(modal);
   };
 
-  // close  form
   const handleClose = () => {
     setModal(false);
   };
@@ -32,11 +40,13 @@ const CommentPopular = () => {
 
         <div className="popular">
           <div className="popular-images">
-            <img src={Image} alt="" />
-            <img src={Image} alt="" />
-            <img src={Image} alt="" />
+            {Images?.map((img) => (
+              <div key={img.id} onClick={() => navigate(`products/${img.id}`)}>
+                <img src={img.image} alt="some" />
+              </div>
+            ))}
           </div>
-          <h1>პოპულარული პროდუქცია</h1>
+          <h1>ახალი პროდუქცია</h1>
         </div>
       </div>
     </section>

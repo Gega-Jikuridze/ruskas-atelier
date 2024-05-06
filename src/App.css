@@ -5,13 +5,28 @@
   text-decoration: none;
 }
 
+body,
+html,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   position: relative;
   background-color: #f4f4f4;
+  height: 100%;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 /* default  */
@@ -200,6 +215,8 @@ header {
 .popular-images img {
   cursor: pointer;
   transition: 0.3s;
+  width: 220px;
+  height: 290px;
 }
 
 .popular-images img:hover {
@@ -413,7 +430,7 @@ footer {
   gap: 25px;
 }
 
-.product-card img{
+.product-card img {
   max-width: 320px;
   width: 100%;
   height: 400px;

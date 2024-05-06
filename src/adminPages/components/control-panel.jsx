@@ -1,33 +1,21 @@
+import { useState } from "react";
+import NewProduct from "./NewProduct";
+
 const ControlPanel = () => {
-  const controlPanelNav = [
-    "მთავარი",
-    "პროდუქცია",
-    "კატეგორია",
-    "ჩვენ შესახებ",
-    "მომხმარებელი",
-  ];
-  const controlPanelEdit = [
-    "დაამატე პრპდუქცია",
-    "დაამატე კატეგორია",
-    "დაამატე ბანერი",
-    "ჩვენ შესახებ",
-  ];
+  const [addNew, setAddNew] = useState(false);
 
   return (
     <div className="control-panel container  ">
-      <div className="control-panel-nav">
-        {controlPanelNav.map((el, index) => (
-          <h1 key={index}>{el}</h1>
-        ))}
-      </div>
+      <div className="control-panel-nav"></div>
 
       <div className="control-panel-edit">
-        {controlPanelEdit.map((el, index) => (
-          <h1 key={index}>
-            {el} <button>დამატება</button>
-          </h1>
-        ))}
+        <h1>
+          დაამატე პროდუქცია
+          <button onClick={() => setAddNew(!addNew)}>ADD</button>
+        </h1>
       </div>
+
+      {addNew && <NewProduct />}
     </div>
   );
 };

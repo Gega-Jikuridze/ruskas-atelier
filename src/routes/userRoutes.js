@@ -5,6 +5,7 @@ import MainPage from "../pages/main-page";
 import ProductsPage from "../pages/products-page";
 import AboutPage from "../pages/about-page";
 import "../App.css";
+import DetailedProduct from "../pages/DetailedProduct";
 
 const userRoutes = [
   {
@@ -24,6 +25,10 @@ const userRoutes = [
       {
         element: <ProductsPage />,
         path: "products",
+      },
+      {
+        element: <DetailedProduct />,
+        path: "products/:id",
       },
       {
         element: <AboutPage />,

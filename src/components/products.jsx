@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { ProductsData } from "../data/ProductsData";
+import { useNavigate } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 
 const Products = () => {
+  const navigate = useNavigate();
+
   const [checkboxValues, setCheckboxValues] = useState({
     woman: false,
     man: false,
@@ -19,8 +23,40 @@ const Products = () => {
     }));
   };
 
-  const Products = ProductsData;
-  console.log(Products);
+  const { fetchRequest, loading } = useFetch({
+    url: "https://crudapi.co.uk/api/v1/products",
+    method: "GET",
+  });
+
+  const newProducts = fetchRequest?.items.map((product) => ({
+    title: product.Title,
+    description: product.Description,
+    category: product.Category,
+    image: product.image,
+    id: product._uuid,
+  }));
+
+  const filteredProducts = newProducts?.filter((product) => {
+    if (
+      !checkboxValues.woman &&
+      !checkboxValues.man &&
+      !checkboxValues.kid &&
+      !checkboxValues.charch &&
+      !checkboxValues.national
+    ) {
+      return true;
+    }
+
+    return (
+      (checkboxValues.woman && product.category === "woman") ||
+      (checkboxValues.man && product.category === "man") ||
+      (checkboxValues.kid && product.category === "kid") ||
+      (checkboxValues.charch && product.category === "charch") ||
+      (checkboxValues.national && product.category === "national")
+    );
+  });
+
+  console.log(newProducts);
 
   return (
     <div className="products-content">
@@ -76,8 +112,12 @@ const Products = () => {
         </form>
 
         <div className="product-cards">
-          {Products.map((el) => (
-            <div className="product-card" key={el.id}>
+          {filteredProducts?.map((el) => (
+            <div
+              className="product-card"
+              key={el.id}
+              onClick={() => navigate(`/products/${el.id}`)}
+            >
               <img src={el.image} alt="" />
               <h1>{el.title}</h1>
             </div>
