@@ -1,5 +1,4 @@
 import { useState } from "react";
-import productImage from "../assets/product.png";
 import { ProductsData } from "../data/ProductsData";
 
 const Products = () => {
@@ -24,7 +23,7 @@ const Products = () => {
   console.log(Products);
 
   return (
-    <div className="products-content container">
+    <div className="products-content">
       <h1 className="filter-h1">ფილტრი</h1>
 
       <div className="products">
@@ -79,8 +78,8 @@ const Products = () => {
         <div className="product-cards">
           {Products.map((el) => (
             <div className="product-card" key={el.id}>
-              <h1>{el.title}</h1>
               <img src={el.image} alt="" />
+              <h1>{el.title}</h1>
             </div>
           ))}
         </div>

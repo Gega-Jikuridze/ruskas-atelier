@@ -11,7 +11,7 @@ const ControlPanelPage = () => {
     if (!isAdmin) {
       navigate("/admin");
     }
-  }, [isAdmin]);
+  }, [isAdmin, navigate]);
 
   return (
     <div>
