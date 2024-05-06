@@ -26,16 +26,22 @@ const NewProduct = () => {
   };
 
   return (
-    <div>
+    <div className="container new-product">
       {loading && <div>Loading...</div>}
       <form onSubmit={onFormSubmit}>
-        <input type="text" placeholder="product title" ref={titleRef} />
+        <input type="text" 
+               placeholder="პროდუქცია"
+               ref={titleRef} 
+               required
+        />
         <input
           type="text"
-          placeholder="prodcut description"
+          placeholder="აღწერა"
           ref={descriptionRef}
+          required
         />
-        <select id="Category" ref={selectedValueRef}>
+        <select id="Category" ref={selectedValueRef}
+          required>
           <option value="">აირჩიე კატეგორია</option>
           <option value="woman">ქალი</option>
           <option value="man">კაცი</option>
@@ -43,8 +49,9 @@ const NewProduct = () => {
           <option value="charch">საეკლესიო</option>
           <option value="national">ნაციონალური</option>
         </select>
-        <button type="submit">Submit</button>
+        <button type="submit">დამატება</button>
       </form>
+
     </div>
   );
 };

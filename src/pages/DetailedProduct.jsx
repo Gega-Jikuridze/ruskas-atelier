@@ -13,12 +13,13 @@ const DetailedProduct = () => {
   console.log(detailedProduct);
 
   return (
-    <div>
+    <div className="detail-product container">
       {loading && <CircularProgress />}
-      <h1>{detailedProduct?.Title}</h1>
-      <h1>{detailedProduct?.Description}</h1>
       <img src={detailedProduct?.image} alt="" />
-      <h2>{detailedProduct?.Category}</h2>
+      <div className="detail-product-description">
+      <h1>{detailedProduct?.Title}</h1>
+      <p>{detailedProduct?.Description}</p>
+      </div>
     </div>
   );
 };
