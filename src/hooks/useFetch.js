@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
-const useProductFetch = ({ url, method }) => {
-  const [products, setProducts] = useState(null);
+const useFetch = ({ url, method }) => {
+  const [fetchRequest, setFetchRequest] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -10,19 +10,20 @@ const useProductFetch = ({ url, method }) => {
     fetch(url, {
       method,
       headers: {
-        accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_DATA}`,
       },
     })
       .then((res) => {
         if (!res.ok) throw new Error("Response Failed");
         return res.json();
       })
-      .then((data) => setProducts(data))
+      .then((data) => setFetchRequest(data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
 
     return () => {
-      setProducts(null);
+      setFetchRequest(null);
       setError(null);
       setLoading(false);
     };
@@ -32,7 +33,7 @@ const useProductFetch = ({ url, method }) => {
     onFetch();
   }, [onFetch]);
 
-  return { products, error, loading, resendRequest: onFetch };
+  return { fetchRequest, error, loading, resendRequest: onFetch };
 };
 
-export default useProductFetch;
+export default useFetch;

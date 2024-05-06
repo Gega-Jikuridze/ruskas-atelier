@@ -5,11 +5,12 @@ const useProductRequest = ({ url, method }) => {
 
   const sendRequest = async (body, custom) => {
     setLoading(true);
-
+    console.log(body);
     const response = await fetch(url || custom, {
       method,
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_DATA}`,
       },
       body: !!body && method !== "GET" ? JSON.stringify(body) : undefined,
     });

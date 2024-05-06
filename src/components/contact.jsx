@@ -7,12 +7,8 @@ const Contact = ({ onClose }) => {
     userLastNameRef,
     userNameRef,
     userNumberRef,
+    loading,
   } = useForm();
-
-  //   const { loading, sendRequest } = useProductRequest({
-  //     url: "",
-  //     method: "POST",
-  //   });
 
   return (
     <div>
@@ -23,6 +19,7 @@ const Contact = ({ onClose }) => {
           საკონტაქტო ინფორმაცია
         </h1>
         <form onSubmit={onFormSubmit}>
+          {loading && <h1>Loading...</h1>}
           <input type="text" placeholder="სახელი" ref={userNameRef} required />
           <input
             type="text"

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import useProductRequest from "./useRequest";
 
 const useForm = () => {
   const userNameRef = useRef(null);
@@ -6,22 +7,20 @@ const useForm = () => {
   const userNumberRef = useRef(null);
   const userEmailRef = useRef(null);
 
+  const { loading, sendRequest } = useProductRequest({
+    url: "https://crudapi.co.uk/api/v1/users",
+    method: "POST",
+  });
+
   const onFormSubmit = (e) => {
     e.preventDefault();
 
-    const userName = userNameRef.current.value;
-    const userLastName = userLastNameRef.current.value;
-    const userNumber = userNumberRef.current.value;
-    const userEmail = userEmailRef.current.value;
+    const name = userNameRef.current.value;
+    const surname = userLastNameRef.current.value;
+    const number = userNumberRef.current.value;
+    const email = userEmailRef.current.value;
 
-    const User = {
-      userName: userName,
-      userLastName: userLastName,
-      phoneNumber: userNumber,
-      userEmail: userEmail,
-    };
-
-    console.log(User);
+    sendRequest([{ name, surname, number, email }]);
 
     if (userNameRef.current) userNameRef.current.value = "";
     if (userLastNameRef.current) userLastNameRef.current.value = "";
@@ -35,6 +34,7 @@ const useForm = () => {
     userNumberRef,
     userEmailRef,
     onFormSubmit,
+    loading,
   };
 };
 

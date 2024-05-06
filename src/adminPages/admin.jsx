@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
+import useProductRequest from "../hooks/useRequest";
 
 const Admin = () => {
   const [username, setUsername] = useState("");
@@ -11,6 +12,11 @@ const Admin = () => {
   console.log(isAdmin);
 
   const navigate = useNavigate();
+
+  // const { sendRequest } = useProductRequest({
+  //   url: "https://ruskasatelier-f1348d78619b.herokuapp.com/auth/login/",
+  //   method: "POST",
+  // });
 
   const admin = {
     adminName: "ruska",
