@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import searchImage from "../assets/Search.png";
+import useSearch from "../hooks/useSearch";
 
 const Search = () => {
   const [search, setSearch] = useState(false);
-  const searchRef = useRef(null);
+  const { onSearch, searchRef } = useSearch();
 
   const searchInput = () => {
     search === false && setSearch(true);
@@ -11,12 +12,6 @@ const Search = () => {
 
   const closeSearch = () => {
     search === true && setSearch(false);
-  };
-
-  const onSearch = (e) => {
-    e.preventDefault();
-
-    console.log(searchRef.current.value);
   };
 
   return (
