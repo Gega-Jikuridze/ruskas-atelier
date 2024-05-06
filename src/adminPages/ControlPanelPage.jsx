@@ -46,7 +46,7 @@ const ControlPanelPage = () => {
           </div>
         ))} */}
       </div>
-      <button onClick={() => setIsAdmin(!isAdmin)}>Log Out</button>
+      <button onClick={() => setIsAdmin(!isAdmin)} className="log-out">გამოსვლა</button>
     </div>
   );
 };

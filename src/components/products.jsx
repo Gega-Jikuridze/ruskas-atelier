@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ProductsData } from "../data/ProductsData";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
@@ -23,7 +22,7 @@ const Products = () => {
     }));
   };
 
-  const { fetchRequest, loading } = useFetch({
+  const { fetchRequest } = useFetch({
     url: "https://crudapi.co.uk/api/v1/products",
     method: "GET",
   });

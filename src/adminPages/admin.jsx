@@ -37,7 +37,7 @@ const Admin = () => {
   };
 
   return (
-    <div className="admin-page">
+    <div className="admin-page container">
       <div className="admin-log">
         <h1>ადმინი</h1>
         <form className="admin-form" onSubmit={handleSubmit}>
@@ -57,7 +57,7 @@ const Admin = () => {
           />
           <input type="submit" value={"შესვლა"} className="log-submit" />
         </form>
-        <button onClick={() => navigate("/")}>Log Out</button>
+        <button onClick={() => navigate("/")} className="log-out">გამოსვლა</button>
         {error && (
           <p className="error">მომხმარებლის სახელი ან პაროლი არასწორია!</p>
         )}

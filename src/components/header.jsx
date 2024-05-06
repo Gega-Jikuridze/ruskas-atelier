@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
-import React, { useEffect, useRef, useState } from "react";
 import Search from "./search";
 
 const Header = () => {
