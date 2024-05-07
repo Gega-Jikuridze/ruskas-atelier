@@ -1,6 +1,6 @@
 import { useState } from "react";
 import searchImage from "../assets/Search.png";
-import useSearch from "../hooks/useSearch";
+import { useSearch } from "../adminPages/context/SearchFilterContext";
 
 const Search = () => {
   const [search, setSearch] = useState(false);

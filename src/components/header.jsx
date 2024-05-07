@@ -11,13 +11,11 @@ const Header = () => {
             <img src={Logo} alt="Logo" />
           </Link>
         </div>
-
         <div className="nav">
           <Link to="/">მთავარი</Link>
           <Link to="/products">პროდუქცია </Link>
           <Link to="/about">ჩვენ შესახებ</Link>
         </div>
-
         <Search />
       </div>
     </header>

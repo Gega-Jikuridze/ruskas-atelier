@@ -1,64 +1,14 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import { useSearch } from "../adminPages/context/SearchFilterContext";
 
 const Products = () => {
   const navigate = useNavigate();
 
-  const [checkboxValues, setCheckboxValues] = useState({
-    woman: false,
-    man: false,
-    kid: false,
-    charch: false,
-    national: false,
-  });
-
-  const handleCheckboxChange = (event) => {
-    const { id, checked } = event.target;
-
-    setCheckboxValues((prevValues) => ({
-      ...prevValues,
-      [id]: checked,
-    }));
-  };
-
-  const { fetchRequest } = useFetch({
-    url: "https://crudapi.co.uk/api/v1/products",
-    method: "GET",
-  });
-
-  const newProducts = fetchRequest?.items.map((product) => ({
-    title: product.Title,
-    description: product.Description,
-    category: product.Category,
-    image: product.image,
-    id: product._uuid,
-  }));
-
-  const filteredProducts = newProducts?.filter((product) => {
-    if (
-      !checkboxValues.woman &&
-      !checkboxValues.man &&
-      !checkboxValues.kid &&
-      !checkboxValues.charch &&
-      !checkboxValues.national
-    ) {
-      return true;
-    }
-
-    return (
-      (checkboxValues.woman && product.category === "woman") ||
-      (checkboxValues.man && product.category === "man") ||
-      (checkboxValues.kid && product.category === "kid") ||
-      (checkboxValues.charch && product.category === "charch") ||
-      (checkboxValues.national && product.category === "national")
-    );
-  });
+  const { displayProducts, handleCheckboxChange, checkboxValues } = useSearch();
 
   return (
     <div className="products-content">
       <h1 className="filter-h1">ფილტრი</h1>
-
       <div className="products">
         <form className="product-filter">
           <label htmlFor="woman">
@@ -107,9 +57,8 @@ const Products = () => {
             />
           </label>
         </form>
-
         <div className="product-cards">
-          {filteredProducts?.map((el) => (
+          {displayProducts?.map((el) => (
             <div
               className="product-card"
               key={el.id}

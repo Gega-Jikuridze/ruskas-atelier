@@ -6,14 +6,17 @@ import ProductsPage from "../pages/products-page";
 import AboutPage from "../pages/about-page";
 import "../App.css";
 import DetailedProduct from "../pages/DetailedProduct";
+import { SearchProvider } from "../adminPages/context/SearchFilterContext";
 
 const userRoutes = [
   {
     element: (
       <div className="App">
-        <Header />
-        <Outlet />
-        <Footer />
+        <SearchProvider>
+          <Header />
+          <Outlet />
+          <Footer />
+        </SearchProvider>
       </div>
     ),
     path: "/",
