@@ -709,3 +709,169 @@ footer {
   cursor: pointer;
   border-radius: 10px;
 }
+
+
+/* .all products  */
+
+.control-panel{
+  display: flex;
+  flex-direction: column;
+}
+
+.product{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+.all-product{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 700px;
+  gap: 50px;
+  position: relative;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px red;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.all-product:hover{
+  transform: scale(1.1);
+}
+
+.products-view{
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+
+}
+
+.product-view-text{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+}
+
+.product-view-text h1{
+  color: black;
+  font-weight: 900;
+}
+
+.product-view-text p{
+  color: black;
+  font-size: 20px;
+}
+
+
+.products-view img{
+  width: 300px;
+  border-radius: 20px;
+}
+
+
+.products-buttons{
+  display: flex;
+  gap: 40px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+@media(max-width:376px){
+
+  .container{
+    max-width: 376px;
+    width: 100%;
+  }
+
+  .header{
+    flex-direction: column;
+    gap: 20px;
+  }
+
+
+  .logo img{
+    width: 150px;
+  }
+
+  .nav{
+    gap: 10px;
+  }
+
+  .nav a{
+    font-size: 15px;
+    padding: 0;
+    width: max-content;
+  }
+
+  
+  .background h1{
+    display: none;
+  }
+
+
+  .comment-popular{
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+
+
+
+  .popular-images{
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    width: 375px;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: -50px;
+  }
+
+  .background-section{
+    height: 500px;
+  }
+
+  .popular-images img{
+    width: 150px;
+    height: 170px;
+  }
+
+  .popular h1{
+    display: none;
+  }
+
+  .comment-popular{
+    gap: 100px;
+  }
+
+  .comment{
+    max-width: 375px;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 20px;
+  }
+  .comment h1{
+    display: none
+  }
+
+
+  .comment button{
+    width: max-content;
+    padding: 10px;
+
+  }
+
+
+}

@@ -12,10 +12,14 @@ const CommentPopular = () => {
     method: "GET",
   });
 
-  const Images = ProductsImage?.items.slice(0, 3).map((product) => ({
+  const Images = (ProductsImage?.items || [])
+  .slice(0, window.innerWidth < 380 ? 2 : 3)
+  .map((product) => ({
     image: product.image,
     id: product._uuid,
   }));
+
+  
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -28,7 +32,7 @@ const CommentPopular = () => {
   };
 
   return (
-    <section className="comment-popular-section">
+    <section className="comment-popular-section container">
       <div className="comment-popular container">
         <div className="comment">
           <h1>

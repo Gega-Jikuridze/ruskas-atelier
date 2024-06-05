@@ -21,7 +21,6 @@ const NewProduct = () => {
       image:
         "https://i.pinimg.com/736x/74/85/10/748510c7ab9c474155dd511164e9252e.jpg",
     };
-
     sendRequest([newProduct]);
   };
 
