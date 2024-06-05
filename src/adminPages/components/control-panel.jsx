@@ -13,7 +13,6 @@ const ControlPanel = () => {
 
   return (
     <div className="control-panel ">
-
       <div className="control-panel-edit">
         <h1>
           დაამატე პროდუქცია

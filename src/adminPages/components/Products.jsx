@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import useProductRequest from "../../hooks/useRequest";
+import UploadWidget from "./UploadWidget";
 
 const Products = ({ item }) => {
   const { sendRequest } = useProductRequest({
@@ -12,6 +13,19 @@ const Products = ({ item }) => {
   const description = useRef(item.Description);
   const title = useRef(item.Title);
   const [state, setState] = useState(false);
+  const [url, updateUrl] = useState();
+  const [, updateError] = useState();
+
+  const handleOnUpload = (error, result, widget) => {
+    if (error) {
+      updateError(error);
+      widget.close({
+        quiet: true,
+      });
+      return;
+    }
+    updateUrl(result?.info?.secure_url);
+  };
 
   const handleDelete = (id) => {
     sendRequest(null, `https://crudapi.co.uk/api/v1/products/${id}`)
@@ -32,7 +46,14 @@ const Products = ({ item }) => {
     const updatedData = {
       Description: description.current.value,
       Title: title.current.value,
+      image: url,
     };
+
+    if (url) {
+      console.log(url);
+    } else {
+      window.alert("Please choose Photo");
+    }
 
     editRequest(updatedData, `https://crudapi.co.uk/api/v1/products/${id}`)
       .then(() => {
@@ -46,14 +67,33 @@ const Products = ({ item }) => {
   return (
     <div key={item?._uuid} style={{ color: "black" }} className="all-product">
       <div className="products-view">
-        <img src={item?.image} alt="" />
+        {state ? (
+          <div>
+            <UploadWidget onUpload={handleOnUpload}>
+              {({ open }) => {
+                const handleOnClick = (e) => {
+                  e.preventDefault();
+                  setTimeout(() => {
+                    console.log(open());
+                  }, 500);
+                  open();
+                };
+                return <button onClick={handleOnClick}>Upload Image</button>;
+              }}
+            </UploadWidget>
+            {url && (
+              <img style={{ width: 200, height: 200 }} src={url} alt="" />
+            )}
+          </div>
+        ) : (
+          <img src={item?.image} alt="" />
+        )}
         <div className="product-view-text">
           {state ? (
             <input type="text" ref={title} defaultValue={item?.Title} />
           ) : (
             <h1>{item?.Title}</h1>
           )}
-
 
           {state ? (
             <input
@@ -65,7 +105,7 @@ const Products = ({ item }) => {
             <p>{item?.Description}</p>
           )}
 
-{state && (
+          {state && (
             <button onClick={() => handleSave(item?._uuid)}>Save</button>
           )}
 

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ControlPanel from "./components/control-panel";
 import useLocalStorage from "../hooks/useLocalStorage";
+import ImageUploader from "./components/imageUploader";
 // import useFetch from "../hooks/useFetch";
 
 const ControlPanelPage = () => {
@@ -46,7 +47,9 @@ const ControlPanelPage = () => {
           </div>
         ))} */}
       </div>
-      <button onClick={() => setIsAdmin(!isAdmin)} className="log-out">გამოსვლა</button>
+      <button onClick={() => setIsAdmin(!isAdmin)} className="log-out">
+        გამოსვლა
+      </button>
     </div>
   );
 };
