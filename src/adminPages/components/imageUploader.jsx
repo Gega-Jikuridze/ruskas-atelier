@@ -41,6 +41,11 @@ const ImageUploader = () => {
       image: url,
     };
     sendRequest([newProduct]);
+
+    titleRef.current.value=''
+    descriptionRef.current.value=''
+    selectedValueRef.current.value = ''
+    updateUrl('')
   };
 
   return (

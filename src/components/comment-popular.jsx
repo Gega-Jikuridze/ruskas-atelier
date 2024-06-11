@@ -33,7 +33,7 @@ const CommentPopular = () => {
 
   return (
     <section className="comment-popular-section container">
-      <div className="comment-popular container">
+      <div className="comment-popular">
         <div className="comment">
           <h1>
             ადგილი სადაც თქვენი <br /> სურვილები იქცევა რეალობად

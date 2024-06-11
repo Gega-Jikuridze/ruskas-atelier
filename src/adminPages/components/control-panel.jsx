@@ -3,7 +3,7 @@ import NewProduct from "./NewProduct";
 import useFetch from "../../hooks/useFetch";
 import Products from "./Products";
 
-const ControlPanel = () => {
+const ControlPanel = ({ setUser, user }) => {
   const [addNew, setAddNew] = useState(false);
 
   const { fetchRequest, loading, onFetch } = useFetch({
@@ -26,7 +26,7 @@ const ControlPanel = () => {
 
         <h1>
           კონტაქტი
-          <button onClick={() => setAddNew(!addNew)}>შეცვლა</button>
+          <button onClick={() => setUser(!user)}>მომხმარებელი</button>
         </h1>
       </div>
 

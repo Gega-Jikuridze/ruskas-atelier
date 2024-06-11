@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import useProductRequest from "../../hooks/useRequest";
 import ImageUploader from "./imageUploader";
 
 const NewProduct = () => {
