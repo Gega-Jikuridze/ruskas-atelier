@@ -459,6 +459,12 @@ footer {
   padding-bottom: 50px;
 }
 
+.product-img{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .products {
   padding-top: 65px;
   display: flex;

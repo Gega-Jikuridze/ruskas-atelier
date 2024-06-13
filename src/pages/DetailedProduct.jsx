@@ -15,7 +15,11 @@ const DetailedProduct = () => {
   return (
     <div className="detail-product container">
       {loading && <CircularProgress />}
+      <div className="product-img">
+      <button>Prev</button>
       <img src={detailedProduct?.image} alt="" />
+      <button>Next</button>
+      </div>
       <div className="detail-product-description">
       <h1>{detailedProduct?.Title}</h1>
       <p>{detailedProduct?.Description}</p>
