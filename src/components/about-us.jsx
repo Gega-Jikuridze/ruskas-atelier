@@ -1,6 +1,14 @@
 import image from "../assets/about-image.png";
+import useFetch from "../hooks/useFetch";
+
 
 const AboutUs = () => {
+
+  const { fetchRequest: AboutUs, loading } = useFetch({
+    url: `https://crudapi.co.uk/api/v1/users/`,
+    method: "GET",
+  });
+
   return (
     <div className="about-us container">
       <img src={image} alt="" />

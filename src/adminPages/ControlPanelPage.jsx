@@ -4,6 +4,7 @@ import ControlPanel from "./components/control-panel";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useFetch from "../hooks/useFetch";
 
+
 const ControlPanelPage = () => {
   const [isAdmin, setIsAdmin] = useLocalStorage("isAdmin", false);
   const navigate = useNavigate();
@@ -27,6 +28,9 @@ const ControlPanelPage = () => {
       navigate("/admin");
     }
   }, [isAdmin, navigate]);
+
+
+
 
   return (
     <div className="control-panel-page">
