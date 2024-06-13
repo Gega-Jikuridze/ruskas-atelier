@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import useProductRequest from "../../hooks/useRequest";
-import UploadWidget from "./UploadWidget";
 
 const Products = ({ item }) => {
   const { sendRequest } = useProductRequest({
@@ -10,24 +9,63 @@ const Products = ({ item }) => {
   const { sendRequest: editRequest } = useProductRequest({
     method: "PUT",
   });
+
+  const [url, setUrl] = useState(
+    Array.isArray(item?.image) ? item.image : [item.image]
+  );
+
   const description = useRef(item.Description);
   const title = useRef(item.Title);
   const [state, setState] = useState(false);
-  const [url, updateUrl] = useState();
+  const [loading, setLoading] = useState(false);
   const [, updateError] = useState();
 
-  const handleOnUpload = (error, result, widget) => {
-    if (error) {
-      updateError(error);
-      widget.close({
-        quiet: true,
-      });
-      return;
+  useEffect(() => {
+    setUrl(Array.isArray(item?.image) ? item.image : [item.image]);
+  }, [item]);
+
+  const handleOnUpload = async (e) => {
+    const files = Array.from(e.target.files);
+    const formDataArray = files.map((file) => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "r0su9exk");
+      return formData;
+    });
+
+    setLoading(true);
+    updateError(null);
+
+    try {
+      const uploadPromises = formDataArray.map((formData) =>
+        fetch(`https://api.cloudinary.com/v1_1/dnf8xaj6f/image/upload`, {
+          method: "POST",
+          body: formData,
+        })
+      );
+
+      const responses = await Promise.all(uploadPromises);
+
+      const dataPromises = responses.map((response) => response.json());
+      const dataArray = await Promise.all(dataPromises);
+
+      const newUrls = dataArray.map((data) => data.secure_url);
+      setUrl((prevUrls) => [...prevUrls, ...newUrls]);
+    } catch (error) {
+      console.error("Error uploading to Cloudinary:", error);
+      updateError("Failed to upload images. Please try again.");
+    } finally {
+      setLoading(false);
     }
-    updateUrl(result?.info?.secure_url);
   };
 
-  const handleDelete = (id) => {
+  const handleDeleteImage = (index) => {
+    const newUrls = [...url];
+    newUrls.splice(index, 1);
+    setUrl(newUrls);
+  };
+
+  const handleDeleteProduct = (id) => {
     sendRequest(null, `https://crudapi.co.uk/api/v1/products/${id}`)
       .then(() => {
         window.location.reload();
@@ -42,6 +80,11 @@ const Products = ({ item }) => {
   };
 
   const handleSave = (id) => {
+    if (url.length === 0) {
+      window.alert("Please choose a photo");
+      return;
+    }
+
     setState(false);
     const updatedData = {
       Description: description.current.value,
@@ -49,18 +92,12 @@ const Products = ({ item }) => {
       image: url,
     };
 
-    if (url) {
-      console.log(url);
-    } else {
-      window.alert("Please choose Photo");
-    }
-
     editRequest(updatedData, `https://crudapi.co.uk/api/v1/products/${id}`)
       .then(() => {
         window.location.reload();
       })
       .catch((error) => {
-        console.error("Error deleting product:", error);
+        console.error("Error updating product:", error);
       });
   };
 
@@ -69,24 +106,53 @@ const Products = ({ item }) => {
       <div className="products-view">
         {state ? (
           <div>
-            <UploadWidget onUpload={handleOnUpload}>
-              {({ open }) => {
-                const handleOnClick = (e) => {
-                  e.preventDefault();
-                  setTimeout(() => {
-                    console.log(open());
-                  }, 500);
-                  open();
-                };
-                return <button onClick={handleOnClick}>Upload Image</button>;
-              }}
-            </UploadWidget>
-            {url && (
-              <img style={{ width: 200, height: 200 }} src={url} alt="" />
+            <input multiple type="file" onChange={handleOnUpload} />
+            {loading && <div>Loading...</div>}
+            {url.length > 0 && (
+              <div
+                style={{ display: "flex", flexWrap: "wrap", maxWidth: "400px" }}
+              >
+                {url.map((imageUrl, index) => (
+                  <div key={index} style={{ position: "relative" }}>
+                    <img
+                      style={{
+                        width: 100,
+                        height: 100,
+                        margin: "5px",
+                        cursor: "pointer",
+                      }}
+                      src={imageUrl}
+                      alt={`Uploaded ${index + 1}`}
+                      onClick={() => handleDeleteImage(index)}
+                    />
+                    <button
+                      style={{ position: "absolute", top: 0, right: 0 }}
+                      onClick={() => handleDeleteImage(index)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         ) : (
-          <img src={item?.image[0]} alt="" />
+          <div style={{ display: "flex", flexWrap: "wrap", maxWidth: "400px" }}>
+            {url.map((imageUrl, index) => (
+              <img
+                key={index}
+                style={{
+                  width: 100,
+                  height: 100,
+                  margin: "5px",
+                  cursor: "pointer",
+                }}
+                src={imageUrl}
+                alt={`Uploaded ${index + 1}`}
+                onClick={() => handleDeleteImage(index)}
+              />
+            ))}
+          </div>
         )}
         <div className="product-view-text">
           {state ? (
@@ -110,8 +176,10 @@ const Products = ({ item }) => {
           )}
 
           <div className="products-buttons">
-            <button onClick={() => handleDelete(item?._uuid)}>DELETE</button>
-            <button onClick={handleEdit}>{state ? "cancel" : "edit"}</button>
+            <button onClick={() => handleDeleteProduct(item?._uuid)}>
+              DELETE
+            </button>
+            <button onClick={handleEdit}>{state ? "Cancel" : "Edit"}</button>
 
             {state && <div>EDIT MODE</div>}
           </div>

@@ -35,6 +35,7 @@ const Detailed = () => {
       <p>Surname: {userDetails?.surname}</p>
       <p>Number: {userDetails?.number}</p>
       <p>Email: {userDetails?.email}</p>
+      <p>Description: {userDetails?.desc}</p>
     </div>
   );
 };

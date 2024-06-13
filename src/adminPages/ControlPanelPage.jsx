@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ControlPanel from "./components/control-panel";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useFetch from "../hooks/useFetch";
-
 
 const ControlPanelPage = () => {
   const [isAdmin, setIsAdmin] = useLocalStorage("isAdmin", false);
@@ -21,6 +20,7 @@ const ControlPanelPage = () => {
     number: user.number,
     email: user.email,
     id: user._uuid,
+    desc: user.desc,
   }));
 
   useEffect(() => {
@@ -29,27 +29,23 @@ const ControlPanelPage = () => {
     }
   }, [isAdmin, navigate]);
 
-
-
-
   return (
     <div className="control-panel-page">
       <ControlPanel setUser={setUser} user={user} />
       {user && (
         <div className="users-table">
-          <i className="bx bx-x-circle"  onClick={() => setUser(!user)}></i>
+          <i className="bx bx-x-circle" onClick={() => setUser(!user)}></i>
           {users?.map((item) => (
             <div className="users-item" key={item.id}>
               <h1>{item.name}</h1>
               <h1>{item.surname}</h1>
               <h1>{item.email}</h1>
-              <button onClick={() => navigate(`/admin/adminPanel/${item.id}`)}>
+              <h1>{item.desc}</h1>
+              <Link to={`/admin/adminPanel/${item.id}`} target="_blank">
                 Details
-              </button>
-              
+              </Link>
             </div>
           ))}
-         
         </div>
       )}
       <button onClick={() => setIsAdmin(!isAdmin)} className="log-out">

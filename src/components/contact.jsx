@@ -7,6 +7,7 @@ const Contact = ({ onClose }) => {
     userLastNameRef,
     userNameRef,
     userNumberRef,
+    userDescr,
     loading,
   } = useForm();
 
@@ -34,6 +35,7 @@ const Contact = ({ onClose }) => {
             required
           />
           <input type="email" placeholder="მეილი" ref={userEmailRef} required />
+          <textarea ref={userDescr} placeholder="აღწერა" required></textarea>
           <input type="submit" value="შენახვა" className="contact-submit" />
         </form>
       </div>

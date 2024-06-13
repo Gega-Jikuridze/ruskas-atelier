@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NewProduct from "./NewProduct";
 import useFetch from "../../hooks/useFetch";
 import Products from "./Products";
 import SetAboutMe from "./setAboutMe";
 
-
-const ControlPanel = ({ setUser, user, aboutMe, setAboutMe }) => {
+const ControlPanel = ({ setUser, user }) => {
   const [addNew, setAddNew] = useState(false);
   const [editAboutMe, setEditAboutMe] = useState(false);
 
-  const { fetchRequest, loading, onFetch } = useFetch({
+  const { fetchRequest } = useFetch({
     url: "https://crudapi.co.uk/api/v1/products",
     method: "GET",
   });
@@ -34,10 +33,17 @@ const ControlPanel = ({ setUser, user, aboutMe, setAboutMe }) => {
       </div>
 
       {addNew && <NewProduct />}
-      {addNew && <div className="overlay" onClick={() => setAddNew(!addNew)}></div>}
+      {addNew && (
+        <div className="overlay" onClick={() => setAddNew(!addNew)}></div>
+      )}
 
-      {editAboutMe && <SetAboutMe aboutMe={aboutMe} setAboutMe={setAboutMe} />}
-      {editAboutMe && <div className="overlay" onClick={() => setEditAboutMe(!editAboutMe)}></div>}
+      {editAboutMe && <SetAboutMe setAddNew={setAddNew} />}
+      {editAboutMe && (
+        <div
+          className="overlay"
+          onClick={() => setEditAboutMe(!editAboutMe)}
+        ></div>
+      )}
 
       <div className="products">
         <div className="product">

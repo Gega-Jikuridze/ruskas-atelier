@@ -26,28 +26,28 @@ const ImageUploader = () => {
       Category: selectedValueRef.current.value,
       Title: titleRef.current.value,
       Description: descriptionRef.current.value,
-      image: urls.map(url => url.cloudinaryUrl), // Only send Cloudinary URLs
+      image: urls.map((url) => url.cloudinaryUrl),
     };
 
     try {
       await sendRequest([newProduct]);
-      titleRef.current.value = '';
-      descriptionRef.current.value = '';
-      selectedValueRef.current.value = '';
+      titleRef.current.value = "";
+      descriptionRef.current.value = "";
+      selectedValueRef.current.value = "";
       updateUrls([]);
     } catch (error) {
-      console.error('Error uploading product:', error);
+      console.error("Error uploading product:", error);
     }
   };
 
   const imageHandler = async (e) => {
     const files = Array.from(e.target.files);
-    const newUrls = files.map(file => ({
+    const newUrls = files.map((file) => ({
       localUrl: URL.createObjectURL(file),
       cloudinaryUrl: null,
       file,
     }));
-    
+
     updateUrls((prevUrls) => [...prevUrls, ...newUrls]);
 
     setLoading(true);
@@ -57,10 +57,10 @@ const ImageUploader = () => {
       for (const fileObj of newUrls) {
         const formData = new FormData();
         formData.append("file", fileObj.file);
-        formData.append("upload_preset", "r0su9exk"); // Replace with your upload preset
+        formData.append("upload_preset", "r0su9exk");
 
         const response = await fetch(
-          `https://api.cloudinary.com/v1_1/dnf8xaj6f/image/upload`, // Replace with your Cloudinary cloud name
+          `https://api.cloudinary.com/v1_1/dnf8xaj6f/image/upload`,
           {
             method: "POST",
             body: formData,
@@ -73,7 +73,7 @@ const ImageUploader = () => {
 
         const data = await response.json();
         updateUrls((prevUrls) =>
-          prevUrls.map(urlObj =>
+          prevUrls.map((urlObj) =>
             urlObj.localUrl === fileObj.localUrl
               ? { ...urlObj, cloudinaryUrl: data.secure_url }
               : urlObj
@@ -103,14 +103,16 @@ const ImageUploader = () => {
           <option value="national">ნაციონალური</option>
         </select>
         <input type="file" multiple onChange={imageHandler} />
-        <button type="submit" disabled={loading}>დამატება</button>
+        <button type="submit" disabled={loading}>
+          დამატება
+        </button>
       </form>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {error && <div style={{ color: "red" }}>{error}</div>}
       <div>
         {urls.map((urlObj, index) => (
           <img
             key={index}
-            style={{ width: 200, height: 200, margin: '10px' }}
+            style={{ width: 200, height: 200, margin: "10px" }}
             src={urlObj.cloudinaryUrl || urlObj.localUrl}
             alt={`Uploaded #${index + 1}`}
           />
