@@ -64,7 +64,7 @@ const Products = () => {
               key={el.id}
               onClick={() => navigate(`/products/${el.id}`)}
             >
-              <img src={el.image} alt="" />
+              <img src={el.image[0]} alt="" />
               <h1>{el.title}</h1>
             </div>
           ))}
