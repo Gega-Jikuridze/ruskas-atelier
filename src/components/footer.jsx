@@ -37,7 +37,7 @@ const Footer = () => {
 
           <a href="https://www.instagram.com/__ruska1/?igsh=MXR0aWo4dnJscXNtaA%3D%3D&fbclid=IwZXh0bgNhZW0CMTAAAR3wWWCKGpHTVFc6rlcX4ZEAtjemz7ibCIAaw8RT3YIsVdKe61TE6VVryPU_aem_AaRZhE2zs9AH2P_gNzDyRnT6MZnb69xoll9aCRTEIoOd3bvs-grHzfz1XfZv5rih_27IIPSkCf21_CNJ8YBJtSfv" target="_blank">
           <h1>
-            <i class='bx bxl-instagram'></i>Follow Us
+            <i className='bx bxl-instagram'></i>Follow Us
           </h1>
           </a>
           </div>

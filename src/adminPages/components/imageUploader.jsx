@@ -1,51 +1,91 @@
 import React, { useRef, useState } from "react";
-import UploadWidget from "./UploadWidget";
 import useProductRequest from "../../hooks/useRequest";
 
 const ImageUploader = () => {
-  const [url, updateUrl] = useState();
-  const [, updateError] = useState();
+  const [urls, updateUrls] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, updateError] = useState(null);
   const selectedValueRef = useRef(null);
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
 
-  const handleOnUpload = (error, result, widget) => {
-    if (error) {
-      updateError(error);
-      widget.close({
-        quiet: true,
-      });
-      return;
-    }
-    updateUrl(result?.info?.secure_url);
-  };
-
-  const { loading, sendRequest } = useProductRequest({
+  const { sendRequest } = useProductRequest({
     url: "https://crudapi.co.uk/api/v1/products",
     method: "POST",
   });
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = async (e) => {
     e.preventDefault();
 
-    if (url) {
-      console.log(url);
-    } else {
-      window.alert("Please choose Photo");
+    if (urls.length === 0) {
+      window.alert("Please choose a photo");
+      return;
     }
 
     const newProduct = {
       Category: selectedValueRef.current.value,
       Title: titleRef.current.value,
       Description: descriptionRef.current.value,
-      image: url,
+      image: urls.map(url => url.cloudinaryUrl), // Only send Cloudinary URLs
     };
-    sendRequest([newProduct]);
 
-    titleRef.current.value=''
-    descriptionRef.current.value=''
-    selectedValueRef.current.value = ''
-    updateUrl('')
+    try {
+      await sendRequest([newProduct]);
+      titleRef.current.value = '';
+      descriptionRef.current.value = '';
+      selectedValueRef.current.value = '';
+      updateUrls([]);
+    } catch (error) {
+      console.error('Error uploading product:', error);
+    }
+  };
+
+  const imageHandler = async (e) => {
+    const files = Array.from(e.target.files);
+    const newUrls = files.map(file => ({
+      localUrl: URL.createObjectURL(file),
+      cloudinaryUrl: null,
+      file,
+    }));
+    
+    updateUrls((prevUrls) => [...prevUrls, ...newUrls]);
+
+    setLoading(true);
+    updateError(null);
+
+    try {
+      for (const fileObj of newUrls) {
+        const formData = new FormData();
+        formData.append("file", fileObj.file);
+        formData.append("upload_preset", "r0su9exk"); // Replace with your upload preset
+
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/dnf8xaj6f/image/upload`, // Replace with your Cloudinary cloud name
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to upload image");
+        }
+
+        const data = await response.json();
+        updateUrls((prevUrls) =>
+          prevUrls.map(urlObj =>
+            urlObj.localUrl === fileObj.localUrl
+              ? { ...urlObj, cloudinaryUrl: data.secure_url }
+              : urlObj
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Error uploading to Cloudinary:", error);
+      updateError("Failed to upload images. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -62,21 +102,20 @@ const ImageUploader = () => {
           <option value="charch">საეკლესიო</option>
           <option value="national">ნაციონალური</option>
         </select>
-        <UploadWidget onUpload={handleOnUpload}>
-          {({ open }) => {
-            const handleOnClick = (e) => {
-              e.preventDefault();
-              setTimeout(() => {
-                console.log(open());
-              }, 500);
-              open();
-            };
-            return <button onClick={handleOnClick}>Upload Image</button>;
-          }}
-        </UploadWidget>
-        <button type="submit">დამატება</button>
+        <input type="file" multiple onChange={imageHandler} />
+        <button type="submit" disabled={loading}>დამატება</button>
       </form>
-      {url && <img style={{ width: 200, height: 200 }} src={url} alt="" />}
+      {error && <div style={{ color: 'red' }}>{error}</div>}
+      <div>
+        {urls.map((urlObj, index) => (
+          <img
+            key={index}
+            style={{ width: 200, height: 200, margin: '10px' }}
+            src={urlObj.cloudinaryUrl || urlObj.localUrl}
+            alt={`Uploaded #${index + 1}`}
+          />
+        ))}
+      </div>
     </>
   );
 };

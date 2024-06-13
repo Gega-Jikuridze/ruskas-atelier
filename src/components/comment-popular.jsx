@@ -46,7 +46,7 @@ const CommentPopular = () => {
           <div className="popular-images">
             {Images?.map((img) => (
               <div key={img.id} onClick={() => navigate(`products/${img.id}`)}>
-                <img src={img.image} alt="some" />
+                <img src={img.image[0]} alt="some" />
               </div>
             ))}
           </div>

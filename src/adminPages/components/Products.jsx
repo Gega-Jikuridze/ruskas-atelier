@@ -86,7 +86,7 @@ const Products = ({ item }) => {
             )}
           </div>
         ) : (
-          <img src={item?.image} alt="" />
+          <img src={item?.image[0]} alt="" />
         )}
         <div className="product-view-text">
           {state ? (
