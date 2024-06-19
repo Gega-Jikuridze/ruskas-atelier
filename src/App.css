@@ -810,11 +810,11 @@ footer {
 }
 
 .products-view {
+  padding: 20px;
   display: flex;
   align-items: flex-start;
   gap: 30px;
-  max-height: 500px;
-  height: 100%;
+  height: 400px
 }
 
 .product-view-text {
