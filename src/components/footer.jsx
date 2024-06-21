@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="footer-first-nav">
             <h1>რუსუდან ქვრივიშვილი</h1>
             <h1>
-              <i className="bx bxs-phone"></i>599 25 82 38
+              <i className="bx bxs-phone"></i>+995 599 25 82 38
             </h1>
           </div>
 

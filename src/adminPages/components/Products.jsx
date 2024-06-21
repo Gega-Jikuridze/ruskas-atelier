@@ -149,7 +149,7 @@ const Products = ({ item }) => {
                 }}
                 src={imageUrl}
                 alt={`Uploaded ${index + 1}`}
-                onClick={() => handleDeleteImage(index)}
+                // onClick={() => handleDeleteImage(index)}
               />
             ))}
           </div>

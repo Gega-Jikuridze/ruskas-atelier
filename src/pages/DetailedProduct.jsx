@@ -31,9 +31,9 @@ const DetailedProduct = () => {
     <div className="detail-product container">
       {loading && <CircularProgress />}
       <div className="product-img">
-        <div onClick={handlePrevImage}>Prev</div>
+        <div onClick={handlePrevImage}><i className='bx bx-chevron-left'></i></div>
         <img src={detailedProduct?.image[imgIndex]} alt="" />
-        <div onClick={handleNextImage}>Next</div>
+        <div onClick={handleNextImage}><i className='bx bx-chevron-right'></i></div>
       </div>
       <div className="detail-product-description">
         <h1>{detailedProduct?.Title}</h1>

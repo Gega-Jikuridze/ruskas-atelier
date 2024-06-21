@@ -5,6 +5,8 @@
   text-decoration: none;
 }
 
+
+
 body,
 html,
 #root {
@@ -399,18 +401,39 @@ footer {
 
 .about-us {
   display: flex;
+  /* flex-direction: column; */
   justify-content: center;
-  align-items: center;
+  align-items: start;
   gap: 40px;
   padding-top: 65px;
   padding-bottom: 200px;
+  height: 800px
 }
+
+.about-us img{
+
+  height: 500px;
+  /* width: 1000px; */
+  border-radius: 20px;
+}
+
+
 
 .about-us-text {
   display: flex;
   flex-direction: column;
   gap: 70px;
+  /* overflow: hidden; */
+  max-height: 500px;
+  transition: .2s;
+  /* padding: 20px; */
+  border-radius: 20px;
 }
+
+/* .about-us-text:hover{
+  overflow: scroll;
+  overflow-x: hidden;
+} */
 
 .about-us-text p {
   font-size: 16px;
@@ -468,6 +491,20 @@ footer {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.product-img div{
+  padding: 6px;
+  background-color: #11427e;
+  color: white;
+  font-size: 30px;
+  transition: .2s;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.product-img div:hover{
+  transform: scale(1.1);
 }
 
 .products {
@@ -800,13 +837,17 @@ footer {
   gap: 50px;
   position: relative;
   border-radius: 20px;
-  box-shadow: 5px 5px 10px white;
+  /* box-shadow: 5px 5px 10px white; */
   cursor: pointer;
   transition: 0.2s;
 }
 
 .all-product:hover {
   transform: scale(1.1);
+}
+
+.all-product input {
+  margin-bottom: 30px;
 }
 
 .products-view {
@@ -848,6 +889,19 @@ footer {
   right: 20px;
 }
 
+.products-buttons button {
+  color: white;
+  background-color: #092241;
+  padding: 5px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.products-buttons button:hover{
+  transform: scale(1.1);
+}
+
 /* users  */
 
 .control-panel {
@@ -885,7 +939,7 @@ footer {
   height: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 30px;
 }
 
 .users-table h1 {
@@ -918,6 +972,28 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+}
+
+.user-details{
+  background-color: #092241;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  /* align-items: center; */
+  gap: 20px;
+  padding: 50px;
+}
+
+.user-details p{
+  font-size: 30px;
+}
+
+.user-details h2{
+  font-size: 40px;
+  text-decoration: underline;
 }
 
 .users-table i {
@@ -1014,6 +1090,15 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: start;
+}
+
+.about-me-form button {
+  background-color: #092241;
+  color: white;
+  font-size: 25px;
+  padding: 5px 10px;
+  cursor: pointer;
+  align-self: center;
 }
 
 .about-me-form label {

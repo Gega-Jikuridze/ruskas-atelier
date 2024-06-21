@@ -21,21 +21,13 @@ const Detailed = () => {
     );
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        width: "100%",
-        alignItems: "center",
-      }}
-    >
+    <div className="user-details" >
       <h2>User Details</h2>
-      <p>Name: {userDetails?.name}</p>
-      <p>Surname: {userDetails?.surname}</p>
-      <p>Number: {userDetails?.number}</p>
-      <p>Email: {userDetails?.email}</p>
-      <p>Description: {userDetails?.desc}</p>
+      <p>Name:    {userDetails?.name}</p>
+      <p>Surname:    {userDetails?.surname}</p>
+      <p>Number:    {userDetails?.number}</p>
+      <p>Email:    {userDetails?.email}</p>
+      <p>Description:    {userDetails?.desc}</p>
     </div>
   );
 };
