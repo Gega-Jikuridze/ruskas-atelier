@@ -9,7 +9,7 @@ const Contact = ({ onClose }) => {
     userNumberRef,
     userDescr,
     loading,
-  } = useForm();
+  } = useForm(onClose);
 
   return (
     <div>

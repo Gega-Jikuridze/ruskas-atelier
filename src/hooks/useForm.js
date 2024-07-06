@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import useProductRequest from "./useRequest";
 
-const useForm = () => {
+const useForm = (onClose) => {
   const userDescr = useRef(null);
   const userNameRef = useRef(null);
   const userLastNameRef = useRef(null);
@@ -29,6 +29,10 @@ const useForm = () => {
     if (userNumberRef.current) userNumberRef.current.value = "";
     if (userEmailRef.current) userEmailRef.current.value = "";
     if (userDescr.current) userDescr.current.value = "";
+
+    if (onClose) {
+      onClose();
+    }
   };
 
   return {
@@ -43,3 +47,4 @@ const useForm = () => {
 };
 
 export default useForm;
+

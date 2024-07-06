@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+
 import Header from "../components/header";
 import Footer from "../components/footer";
 import MainPage from "../pages/main-page";
@@ -7,6 +7,7 @@ import AboutPage from "../pages/about-page";
 import "../App.css";
 import DetailedProduct from "../pages/DetailedProduct";
 import { SearchProvider } from "../adminPages/context/SearchFilterContext";
+import { Outlet } from "react-router-dom";
 
 const userRoutes = [
   {
