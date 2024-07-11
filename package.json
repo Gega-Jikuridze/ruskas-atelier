@@ -2,7 +2,6 @@
   "name": "atelier",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://crudapi.co.uk/",
   "dependencies": {
     "@cloudinary/url-gen": "^1.19.0",
     "@emotion/react": "^11.11.4",

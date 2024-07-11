@@ -39,8 +39,8 @@ const ControlPanelPage = () => {
             <div className="users-item" key={item.id}>
               <h1>{item.name}</h1>
               <h1>{item.surname}</h1>
-              {/* <h1>{item.email}</h1> */}
-              {/* <h1>{item.desc}</h1> */}
+              <h1>{item.email}</h1>
+              <h1>{item.desc}</h1>
               <Link to={`/admin/adminPanel/${item.id}`} target="_blank">
                 Details
               </Link>

@@ -47,4 +47,3 @@ const useForm = (onClose) => {
 };
 
 export default useForm;
-
